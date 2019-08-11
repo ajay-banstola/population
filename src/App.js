@@ -97,7 +97,7 @@ class App extends React.Component {
             ]
           },
           {
-            name: "job3-3",
+            name: "city3-3",
             gender: [
               {
                 name: "male",
@@ -145,18 +145,18 @@ class App extends React.Component {
     });
 
     if (this.state.selectedCity !== "All") {
-      var job = country[0].cities.filter(jobname => {
-        return jobname.name === this.state.selectedCity;
+      var city = country[0].cities.filter(cityname => {
+        return cityname.name === this.state.selectedCity;
       });
     } else {
-      job = country[0].cities;
+      city = country[0].cities;
     }
     if (this.state.selectedgender !== "All") {
-      var value = job[0].gender.filter(gendername => {
+      var value = city[0].gender.filter(gendername => {
         return gendername.name === this.state.selectedgender;
       });
     } else {
-      value = job[0].gender;
+      value = city[0].gender;
     }
     return (
       <div>
@@ -202,7 +202,7 @@ class App extends React.Component {
         <div>
           <tr>
             <th>country </th>
-            <th>job </th>
+            <th>city </th>
             <th>gender</th>
           </tr>
         </div>
