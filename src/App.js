@@ -191,7 +191,12 @@ class App extends React.Component {
             return <option>{company.name}</option>;
           })}
         </select>
-        {value[0].salary}
+        {this.state.selectedLevel === "All" ||
+        this.state.selectedJob === "All" ? (
+          <div> add garna baki xa</div>
+        ) : (
+          <div>{value[0].salary}</div>
+        )}
       </div>
     );
   };
