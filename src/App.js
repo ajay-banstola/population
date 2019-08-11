@@ -193,9 +193,10 @@ class App extends React.Component {
         </select>
         {this.state.selectedLevel === "All" ||
         this.state.selectedJob === "All" ? (
-          <div> add garna baki xa</div>
+          <div> Add garna baki xa</div>
         ) : (
-          <div>{value[0].salary}</div>
+          // <div>{value[0].salary}</div>
+          <div />
         )}
       </div>
     );
