@@ -118,7 +118,7 @@ class App extends React.Component {
     ],
     selectedCompany: "company1",
     selectedJob: "job1-1",
-    selectedLevel: "junior"
+    selectedLevel: "mid"
   };
 
   handleChange = e => {
@@ -144,14 +144,20 @@ class App extends React.Component {
       return company.name === this.state.selectedCompany;
     });
 
-    let job = company[0].jobs.filter(jobname => {
-      return jobname.name === this.state.selectedJob;
-    });
-
-    let value = job[0].level.filter(levelname => {
-      return levelname.name === this.state.selectedLevel;
-    });
-
+    if (this.state.selectedJob !== "All") {
+      var job = company[0].jobs.filter(jobname => {
+        return jobname.name === this.state.selectedJob;
+      });
+    } else {
+      job = company[0].jobs;
+    }
+    if (this.state.selectedLevel !== "All") {
+      var value = job[0].level.filter(levelname => {
+        return levelname.name === this.state.selectedLevel;
+      });
+    } else {
+      value = job[0].level;
+    }
     return (
       <div>
         level
@@ -159,6 +165,7 @@ class App extends React.Component {
           value={this.state.selectedLevel}
           onChange={this.handleChange3.bind(this)}
         >
+          <option>All</option>
           <option>junior</option>
           <option>mid</option>
           <option>senior</option>
@@ -168,6 +175,7 @@ class App extends React.Component {
           value={this.state.selectedJob}
           onChange={this.handleChange2.bind(this)}
         >
+          <option>All</option>
           {company[0].jobs.map((sal, i) => {
             return <option>{sal.name}</option>;
           })}
