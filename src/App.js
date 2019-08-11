@@ -191,13 +191,34 @@ class App extends React.Component {
             return <option>{company.name}</option>;
           })}
         </select>
-        {this.state.selectedLevel === "All" ||
+        {/* {this.state.selectedLevel === "All" ||
         this.state.selectedJob === "All" ? (
           <div> Add garna baki xa</div>
         ) : (
           // <div>{value[0].salary}</div>
-          <div />
-        )}
+          <div>
+
+          </div>
+        )} */}
+        <div>
+          <tr>
+            <th>Company</th>
+            <th>job</th>
+            <th>level</th>
+          </tr>
+        </div>
+        {this.state.companies.map((company, i) => {
+          return company.name;
+        })}
+        <br />
+        {company[0].jobs.map((sal, i) => {
+          return sal.name;
+        })}
+        {company[0].jobs.map((sal, i) => {
+          return sal.name;
+        })}
+        <br />
+        {this.state.selectedLevel}
       </div>
     );
   };
