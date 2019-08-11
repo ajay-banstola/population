@@ -2,223 +2,222 @@ import React from "react";
 
 class App extends React.Component {
   state = {
-    companies: [
+    countries: [
       {
-        name: "company1",
-        jobs: [
+        name: "country1",
+        cities: [
           {
-            name: "job1-1",
-            level: [
+            name: "city1-1",
+            gender: [
               {
-                name: "junior",
-                salary: 1234
+                name: "male",
+                ageold: 1234,
+                ageyoung: 23232,
+                agechild: 78788
               },
               {
-                name: "senior",
-                salary: 2345
-              },
-              {
-                name: "mid",
-                salary: 34566
+                name: "female",
+                ageold: 1234,
+                ageyoung: 23232,
+                agechild: 78788
               }
             ]
           },
           {
-            name: "job1-2",
-            level: [
+            name: "city1-2",
+            gender: [
               {
-                name: "junior",
-                salary: 9876
+                name: "male",
+                ageold: 1234,
+                ageyoung: 23232,
+                agechild: 78788
               },
               {
-                name: "senior",
-                salary: 98777
-              },
-              {
-                name: "mid",
-                salary: 34566
+                name: "female",
+                ageold: 1234,
+                ageyoung: 23232,
+                agechild: 78788
               }
             ]
           },
           {
-            name: "job1-3",
-            level: [
+            name: "city1-3",
+            gender: [
               {
-                name: "junior",
-                salary: 9446
+                name: "male",
+                ageold: 1234,
+                ageyoung: 23232,
+                agechild: 78788
               },
               {
-                name: "senior",
-                salary: 98947
-              },
-              {
-                name: "mid",
-                salary: 134566
+                name: "female",
+                ageold: 1234,
+                ageyoung: 23232,
+                agechild: 78788
               }
             ]
           }
         ]
       },
       {
-        name: "company2",
-        jobs: [
+        name: "country2",
+        cities: [
           {
-            name: "job2-1",
-            level: [
+            name: "city2-1",
+            gender: [
               {
-                name: "junior",
-                salary: 343431234
+                name: "male",
+                ageold: 1234,
+                ageyoung: 23232,
+                agechild: 78788
               },
               {
-                name: "senior",
-                salary: 552345
-              },
-              {
-                name: "mid",
-                salary: 4434566
+                name: "female",
+                ageold: 1234,
+                ageyoung: 23232,
+                agechild: 78788
               }
             ]
           },
           {
-            name: "job2-2",
-            level: [
+            name: "city2-2",
+            gender: [
               {
-                name: "junior",
-                salary: 99876
+                name: "male",
+                ageold: 1234,
+                ageyoung: 23232,
+                agechild: 78788
               },
               {
-                name: "senior",
-                salary: 5698777
-              },
-              {
-                name: "mid",
-                salary: 4434566
+                name: "female",
+                ageold: 1234,
+                ageyoung: 23232,
+                agechild: 78788
               }
             ]
           },
           {
             name: "job3-3",
-            level: [
+            gender: [
               {
-                name: "junior",
-                salary: 933446
+                name: "male",
+                ageold: 1234,
+                ageyoung: 23232,
+                agechild: 78788
               },
               {
-                name: "senior",
-                salary: 9338947
-              },
-              {
-                name: "mid",
-                salary: 13334566
+                name: "female",
+                ageold: 1234,
+                ageyoung: 23232,
+                agechild: 78788
               }
             ]
           }
         ]
       }
     ],
-    selectedCompany: "company1",
-    selectedJob: "job1-1",
-    selectedLevel: "mid"
+    selectedcountry: "country1",
+    selectedCity: "city1-1",
+    selectedgender: "male"
   };
 
   handleChange = e => {
-    let company = this.state.companies.filter(company => {
-      return company.name === e.target.value;
+    let country = this.state.countries.filter(country => {
+      return country.name === e.target.value;
     });
-    let selectedJob = company[0].jobs[0].name;
-    this.setState({ selectedCompany: e.target.value, selectedJob }, () =>
-      console.log(this.state.selectedJob)
+    let selectedCity = country[0].cities[0].name;
+    this.setState({ selectedcountry: e.target.value, selectedCity }, () =>
+      console.log(this.state.selectedCity)
     );
   };
 
   handleChange2 = e => {
-    this.setState({ selectedJob: e.target.value });
+    this.setState({ selectedCity: e.target.value });
   };
 
   handleChange3 = e => {
-    this.setState({ selectedLevel: e.target.value });
+    this.setState({ selectedgender: e.target.value });
   };
 
   render = () => {
-    let company = this.state.companies.filter(company => {
-      return company.name === this.state.selectedCompany;
+    let country = this.state.countries.filter(country => {
+      return country.name === this.state.selectedcountry;
     });
 
-    if (this.state.selectedJob !== "All") {
-      var job = company[0].jobs.filter(jobname => {
-        return jobname.name === this.state.selectedJob;
+    if (this.state.selectedCity !== "All") {
+      var job = country[0].cities.filter(jobname => {
+        return jobname.name === this.state.selectedCity;
       });
     } else {
-      job = company[0].jobs;
+      job = country[0].cities;
     }
-    if (this.state.selectedLevel !== "All") {
-      var value = job[0].level.filter(levelname => {
-        return levelname.name === this.state.selectedLevel;
+    if (this.state.selectedgender !== "All") {
+      var value = job[0].gender.filter(gendername => {
+        return gendername.name === this.state.selectedgender;
       });
     } else {
-      value = job[0].level;
+      value = job[0].gender;
     }
     return (
       <div>
-        level
+        gender
         <select
-          value={this.state.selectedLevel}
+          value={this.state.selectedgender}
           onChange={this.handleChange3.bind(this)}
         >
           <option>All</option>
-          <option>junior</option>
-          <option>mid</option>
-          <option>senior</option>
+          <option>Male</option>
+          <option>Female</option>
         </select>
-        jobs
+        cities
         <select
-          value={this.state.selectedJob}
+          value={this.state.selectedCity}
           onChange={this.handleChange2.bind(this)}
         >
           <option>All</option>
-          {company[0].jobs.map((sal, i) => {
+          {country[0].cities.map((sal, i) => {
             return <option>{sal.name}</option>;
           })}
         </select>
-        companies
+        countries
         <select
-          value={this.state.selectedCompany}
+          value={this.state.selectedcountry}
           onChange={e => {
             this.handleChange(e);
           }}
         >
-          {this.state.companies.map((company, i) => {
-            return <option>{company.name}</option>;
+          {this.state.countries.map((country, i) => {
+            return <option>{country.name}</option>;
           })}
         </select>
-        {/* {this.state.selectedLevel === "All" ||
-        this.state.selectedJob === "All" ? (
+        {/* {this.state.selectedgender === "All" ||
+        this.state.selectedCity === "All" ? (
           <div> Add garna baki xa</div>
         ) : (
-          // <div>{value[0].salary}</div>
+          // <div>{value[0].age}</div>
           <div>
 
           </div>
         )} */}
         <div>
           <tr>
-            <th>Company</th>
-            <th>job</th>
-            <th>level</th>
+            <th>country </th>
+            <th>job </th>
+            <th>gender</th>
           </tr>
         </div>
-        {this.state.companies.map((company, i) => {
-          return company.name;
+        {/* {this.state.countries.map((country, i) => {
+          return country.name;
         })}
         <br />
-        {company[0].jobs.map((sal, i) => {
+        {country[0].cities.map((sal, i) => {
           return sal.name;
         })}
-        {company[0].jobs.map((sal, i) => {
+        {country[0].cities.map((sal, i) => {
           return sal.name;
         })}
         <br />
-        {this.state.selectedLevel}
+        {this.state.selectedgender} */}
       </div>
     );
   };
